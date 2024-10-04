@@ -1,0 +1,1 @@
+{"version":3,"file":"static/css/main.283d13ca.css","mappings":"AAUA,4CACI,aAAc,CACd,YACJ","sources":["App.css"],"sourcesContent":[".number-box {\r\n    display: block;\r\n    margin: 0.1rem;\r\n}\r\n\r\n.operator-box {\r\n    display: block;\r\n    margin: 0.1rem;\r\n}\r\n\r\n.calculate-button {\r\n    display: block;\r\n    margin: 0.1rem;\r\n}"],"names":[],"sourceRoot":""}
