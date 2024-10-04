@@ -1,0 +1,14 @@
+.number-box {
+    display: block;
+    margin: 0.1rem;
+}
+
+.operator-box {
+    display: block;
+    margin: 0.1rem;
+}
+
+.calculate-button {
+    display: block;
+    margin: 0.1rem;
+}
