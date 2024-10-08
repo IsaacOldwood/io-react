@@ -1,18 +1,10 @@
 import { useState } from "react";
 import "./Counter.css";
 
-function PlusButton({ onClickHandler }) {
+function CounterButton({ onClickHandler, text }) {
   return (
-    <button className="counter" id="counter-plus-button" onClick={onClickHandler}>
-      +
-    </button>
-  );
-}
-
-function MinusButton({ onClickHandler }) {
-  return (
-    <button className="counter" id="counter-minus-button" onClick={onClickHandler}>
-      -
+    <button className="counter" onClick={onClickHandler}>
+      {text}
     </button>
   );
 }
@@ -32,8 +24,8 @@ function Counter() {
     <div>
       <h2>Counter</h2>
       <div>Current count: {count}</div>
-      <MinusButton onClickHandler={decreaseCount} />
-      <PlusButton onClickHandler={increaseCount} />
+      <CounterButton text="-" onClickHandler={decreaseCount} />
+      <CounterButton text="+" onClickHandler={increaseCount} />
     </div>
   );
 }
