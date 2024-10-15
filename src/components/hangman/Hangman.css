@@ -1,3 +1,4 @@
-button.counter {
-    margin: 0.1rem;
+span.letter-box {
+    margin: 0 0.1rem 0 0.1rem;
+    border-bottom: 1px solid black;
 }
