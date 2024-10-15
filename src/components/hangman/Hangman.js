@@ -2,11 +2,15 @@ import { useState } from "react";
 import "./Hangman.css";
 
 function GuessBox({ changeHandler }) {
-  return <input className="guess-box" type="text" maxLength="1" onChange={(e) => changeHandler(e.target.value)} />;
-}
-
-function GuessButton() {
-  return <button className="guess-button">Guess</button>;
+  return (
+    <input
+      className="guess-box"
+      type="text"
+      maxLength="1"
+      onChange={(e) => changeHandler(e.target.value)}
+      placeholder="Guess a letter"
+    />
+  );
 }
 
 function LetterBox({ letter }) {
@@ -33,25 +37,47 @@ function revealAnswer(answer, guesses) {
     } else {
       revealedAnswer += "#";
     }
-    console.log(revealedAnswer);
   }
   return revealedAnswer;
 }
 
 function Hangman() {
+  const [lives, setLives] = useState(6);
+  const [gameOver, setGameOver] = useState(false);
+  const [winner, setWinner] = useState(false);
+  const [livesText, setLivesText] = useState("Lives: " + lives);
   let answer = "HELLO WORLD";
-  let [guesses, setGuesses] = useState([]);
-  let [revealedAnswer, setRevealedAnswer] = useState(revealAnswer(answer, []));
+  const [guesses, setGuesses] = useState([]);
+  const [revealedAnswer, setRevealedAnswer] = useState(revealAnswer(answer, []));
 
   function addGuess(guess) {
-    if (guess === "") {
+    if (gameOver || winner || guess === "") {
       return;
-    } else if (guesses.includes(guess)) {
+    }
+
+    guess = guess.toUpperCase();
+    if (guesses.includes(guess)) {
       return;
     } else {
       let newGuesses = [...guesses, guess];
+      let newRevealedAnswer = revealAnswer(answer, newGuesses);
       setGuesses(newGuesses);
-      setRevealedAnswer(revealAnswer(answer, newGuesses));
+      setRevealedAnswer(newRevealedAnswer);
+
+      console.log(answer, newRevealedAnswer);
+      if (answer === newRevealedAnswer) {
+        setWinner(true);
+        setLivesText("You Win!");
+      } else if (!answer.includes(guess)) {
+        let newLives = lives - 1;
+        setLives(newLives);
+        if (newLives === 0) {
+          setGameOver(true);
+          setLivesText("Game Over!");
+        } else {
+          setLivesText("Lives: " + newLives);
+        }
+      }
     }
   }
 
@@ -59,8 +85,8 @@ function Hangman() {
     <div>
       <h2>Hangman</h2>
       <GuessBox changeHandler={addGuess} />
-      <GuessButton />
       <AnswerBoxes revealedAnswer={revealedAnswer} />
+      <p>{livesText}</p>
     </div>
   );
 }
