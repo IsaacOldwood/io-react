@@ -7,12 +7,21 @@ function NumberBox({ onChangeHandler }) {
 
 function OperatorBox({ onChangeHandler, operator }) {
   return (
-    <input className="operator-box" type="text" value={operator} readOnly={true} onChange={(e) => onChangeHandler(e.target.value)} />
+    <input
+      className="operator-box"
+      type="text"
+      value={operator}
+      onChange={(e) => onChangeHandler(e.target.value)}
+    />
   );
 }
 
-function CalculateButton({onClickHandler}) {
-  return <button className="calculate-button" onClick={onClickHandler}>Calculate</button>;
+function CalculateButton({ onClickHandler }) {
+  return (
+    <button className="calculate-button" onClick={onClickHandler}>
+      Calculate
+    </button>
+  );
 }
 
 function CalculationOutput({ result }) {
@@ -26,7 +35,23 @@ function Calculator() {
   const [input2, setInput2] = useState(null);
 
   function calculate() {
-    let output = parseFloat(input1) + parseFloat(input2);
+    let output = null;
+    switch (operator) {
+      case "+":
+        output = parseFloat(input1) + parseFloat(input2);
+        break;
+      case "-":
+        output = parseFloat(input1) - parseFloat(input2);
+        break;
+      case "/":
+        output = parseFloat(input1) / parseFloat(input2);
+        break;
+      case "*":
+        output = parseFloat(input1) * parseFloat(input2);
+        break;
+      default:
+        break;
+    }
 
     setResult(output);
   }
@@ -37,7 +62,7 @@ function Calculator() {
       <NumberBox onChangeHandler={setInput1} />
       <OperatorBox operator={operator} onChangeHandler={setOperator} />
       <NumberBox onChangeHandler={setInput2} />
-      <CalculateButton onClickHandler={calculate}/>
+      <CalculateButton onClickHandler={calculate} />
       <CalculationOutput result={result} />
     </div>
   );
