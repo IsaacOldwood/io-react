@@ -7,12 +7,7 @@ function NumberBox({ onChangeHandler }) {
 
 function OperatorBox({ onChangeHandler, operator }) {
   return (
-    <input
-      className="operator-box"
-      type="text"
-      value={operator}
-      onChange={(e) => onChangeHandler(e.target.value)}
-    />
+    <input className="operator-box" type="text" value={operator} onChange={(e) => onChangeHandler(e.target.value)} />
   );
 }
 
