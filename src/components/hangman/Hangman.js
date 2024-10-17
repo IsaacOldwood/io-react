@@ -41,12 +41,17 @@ function revealAnswer(answer, guesses) {
   return revealedAnswer;
 }
 
+function getRandomAnswer(wordList) {
+  return wordList[Math.floor(Math.random() * wordList.length)];
+}
+
 function Hangman() {
+  const wordList = ["HELLO WORLD", "GOODBYE WORLD", "REACT APP", "HANGMAN GAME"];
   const [lives, setLives] = useState(6);
   const [gameOver, setGameOver] = useState(false);
   const [winner, setWinner] = useState(false);
   const [livesText, setLivesText] = useState("Lives: " + lives);
-  let answer = "HELLO WORLD";
+  const [answer] = useState(getRandomAnswer(wordList));
   const [guesses, setGuesses] = useState([]);
   const [revealedAnswer, setRevealedAnswer] = useState(revealAnswer(answer, []));
 
