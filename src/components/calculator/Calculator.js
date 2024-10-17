@@ -6,8 +6,21 @@ function NumberBox({ onChangeHandler }) {
 }
 
 function OperatorBox({ onChangeHandler, operator }) {
+  const operators = ["+", "-", "*", "/"];
+  const operatorElements = operators.map((op) => (
+    <input
+      key={op}
+      className={"operator-box" + (operator === op ? " selected" : "")}
+      type="button"
+      value={op}
+      onClick={(e) => onChangeHandler(e.target.value)}
+    />
+  ));
+
   return (
-    <input className="operator-box" type="text" value={operator} onChange={(e) => onChangeHandler(e.target.value)} />
+    <>
+      {operatorElements}
+    </>
   );
 }
 

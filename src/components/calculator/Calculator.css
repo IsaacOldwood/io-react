@@ -12,3 +12,12 @@
     display: block;
     margin: 0.1rem;
 }
+
+input.operator-box {
+    display: inline-block;
+}
+
+input.operator-box.selected {
+    background-color: #f0f0f0;
+    box-shadow: inset 1px;
+}

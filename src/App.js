@@ -6,8 +6,8 @@ import Hangman from "./components/hangman/Hangman";
 function App() {
   return (
     <>
-      <Calculator />
       <Counter />
+      <Calculator />
       <Hangman />
     </>
   );
