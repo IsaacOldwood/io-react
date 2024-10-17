@@ -27,6 +27,10 @@ function AnswerBoxes({ revealedAnswer }) {
   );
 }
 
+function PreviousGuesses({ guesses }) {
+  return <div className="previous-guesses">{guesses}</div>;
+}
+
 function revealAnswer(answer, guesses) {
   let revealedAnswer = "";
   for (const element of answer) {
@@ -91,6 +95,7 @@ function Hangman() {
       <h2>Hangman</h2>
       <GuessBox changeHandler={addGuess} />
       <AnswerBoxes revealedAnswer={revealedAnswer} />
+      <PreviousGuesses guesses={guesses.join(",")} />
       <p>{livesText}</p>
     </div>
   );
